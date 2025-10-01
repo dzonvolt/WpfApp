@@ -28,6 +28,15 @@ namespace WpfApp
         public decimal Cost { get; set; }
         public Nullable<double> Discount { get; set; }
         public string Description { get; set; }
+
+        public Nullable<int> FixedDiscount {
+            get
+            {
+                if (this.Discount.HasValue) return (int)(100.0 * this.Discount.Value);
+                return null;
+            } 
+        }
+
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientService> ClientService { get; set; }
